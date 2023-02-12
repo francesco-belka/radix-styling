@@ -59,7 +59,7 @@ const DialogContent = styled(Dialog.Content, {
   backgroundColor: "White",
   padding: "1.5rem 2.5rem",
   borderRadius: "6px",
-  width: "288px",
+  width: "33%",
   animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
 });
 

@@ -14,7 +14,7 @@ module.exports = {
       },
       animation: {
         popIn: "popIn 150ms cubic-bezier(0.16, 1, 0.3, 1)",
-      },
+      }
     },
   },
   plugins: [],
