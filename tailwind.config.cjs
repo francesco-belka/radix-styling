@@ -5,6 +5,7 @@ module.exports = {
     extend: {
       colors: {
         bg: "#242424",
+        primary: "#3b82f6",
       },
       keyframes: {
         popIn: {
@@ -14,7 +15,7 @@ module.exports = {
       },
       animation: {
         popIn: "popIn 150ms cubic-bezier(0.16, 1, 0.3, 1)",
-      }
+      },
     },
   },
   plugins: [],

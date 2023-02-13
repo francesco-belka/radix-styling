@@ -1,3 +1,3 @@
-import StitchesDialog from "./StitchesVersion";
+import StitchesDialog from "./StitchesDialog";
 
 export { StitchesDialog };

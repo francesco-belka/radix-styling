@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./App.css";
 import { StitchesDialog } from "./components/stitches";
 import { TailwindDialog } from "./components/tailwind";
@@ -7,7 +8,7 @@ function App() {
     <div className="App">
       <div></div>
       <h1>Radix UI + stitches / tailwind</h1>
-      <div className="p-6 flex justify-around">
+      <div className="flex justify-around p-6">
         <TailwindDialog />
         <StitchesDialog />
       </div>
