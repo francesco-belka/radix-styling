@@ -11,22 +11,24 @@ const UICheckbox = React.forwardRef(
   ({ label, ...props }: Props, ref: React.ForwardedRef<HTMLButtonElement>) => {
     const { theme } = useTheme();
     return (
-      <Flex dir="row">
+      <Flex dir="row" sx={{ gap: ".75rem" }}>
         <Checkbox.Root
           {...props}
           ref={ref}
           sx={{
-            height: "$$size",
-            width: "$$size",
+            height: "checkbox",
+            width: "checkbox",
             borderRadius: theme.radii.small,
             boxShadow: "1px 1px 3px 1px rgba(0, 0, 0, 0.2)",
             outline: "1px solid #dadada",
             alignItems: "center",
             justifyContent: "center",
+            display: "flex",
           }}
         >
           <Checkbox.Indicator
             sx={{
+              display: "block",
               width: ".75rem",
               height: ".75rem",
               borderRadius: theme.radii.small,
@@ -42,4 +44,4 @@ const UICheckbox = React.forwardRef(
   }
 );
 
-export default UICheckbox;
+export { UICheckbox };

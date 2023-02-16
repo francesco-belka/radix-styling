@@ -28,6 +28,7 @@ export const theme = makeTheme({
   },
   sizes: {
     icon: 18,
+    checkbox: 25,
     logo: 35,
   },
   colors: {
@@ -72,7 +73,19 @@ export const theme = makeTheme({
       },
     },
   },
-  layout
+  tabs: {
+    bg: {
+      '&[data-state="active"]': {
+        backgroundColor: "primary",
+        color: "White",
+      },
+    },
+    border: {
+      '&[data-state="active"]': {
+        color: "primary",
+      },
+    },
+  },
 });
 
 export type ExactTheme = typeof theme;

@@ -1,9 +1,11 @@
 /** @jsxImportSource theme-ui */
-import React, { useState } from "react";
+import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Tabs from "@radix-ui/react-tabs";
-import * as Checkbox from "@radix-ui/react-checkbox";
-import { Box, Button, Close } from "theme-ui";
+import { Button, Close } from "theme-ui";
+import { UICheckbox } from "./UICheckBox";
+import { TabsTrigger } from "./UITrigger";
+import { keyframes } from "@emotion/react";
 
 type Props = {};
 
@@ -11,7 +13,7 @@ const themeuiDialog = (props: Props) => {
   const [activeMode, setActiveMode] = useState<"bg" | "border">("border");
   const [tabsDisabled, setTabsDisabled] = useState(false);
   return (
-    <Dialog.Root onOpenChange={() => setTabsDisabled(false)} open>
+    <Dialog.Root onOpenChange={() => setTabsDisabled(false)}>
       <Dialog.Trigger asChild>
         <Button variant="trigger" backgroundColor="transparent">
           <img src="./logo.png" width={35} height={35}></img>
@@ -24,6 +26,7 @@ const themeuiDialog = (props: Props) => {
             backgroundColor: "rgba(30, 41, 59,.7)",
             position: "fixed",
             inset: 0,
+            animation: `${overlayShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
           }}
         />
         <Dialog.Content
@@ -35,6 +38,7 @@ const themeuiDialog = (props: Props) => {
             borderRadius: "medium",
             width: "33%",
             height: "13rem",
+            animation: `${contentShow} 150ms cubic-bezier(0.16, 1, 0.3, 1)`,
           }}
         >
           <Dialog.Close asChild>
@@ -62,28 +66,57 @@ const themeuiDialog = (props: Props) => {
               backgroundColor: "White",
             }}
           >
-            <Tabs.List sx={{ display: "flex", width: "100%" }}>
-              <Tabs.Trigger
+            <Tabs.List
+              sx={{
+                display: "flex",
+                width: "100%",
+                borderRadius: "6px 6px 0 0 ",
+              }}
+            >
+              <TabsTrigger
                 value="tab1"
                 activeMode={activeMode}
                 disabled={tabsDisabled}
               >
                 Main content
-              </Tabs.Trigger>
-              <Tabs.Trigger
+              </TabsTrigger>
+              <TabsTrigger
                 value="tab2"
                 activeMode={activeMode}
                 disabled={tabsDisabled}
               >
                 Settings
-              </Tabs.Trigger>
+              </TabsTrigger>
             </Tabs.List>
-            <Tabs.Content value="tab1">
-              <Dialog.Title>Title</Dialog.Title>
-              <Dialog.Description>This is a description</Dialog.Description>
+            <Tabs.Content
+              value="tab1"
+              sx={{ paddingY: "1.5rem", paddingX: "2.5rem" }}
+            >
+              <Dialog.Title
+                sx={{
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                  color: "black",
+                }}
+              >
+                Title
+              </Dialog.Title>
+              <Dialog.Description sx={{ color: "#6b7280" }}>
+                This is a description
+              </Dialog.Description>
             </Tabs.Content>
-            <Tabs.Content value="tab2">
-              <Checkbox.Root
+            <Tabs.Content
+              value="tab2"
+              sx={{
+                display: "flex",
+                height: "100%",
+                flexFlow: "column nowrap",
+                justifyContent: "center",
+                gap: 16,
+                paddingX: "2.5rem",
+              }}
+            >
+              <UICheckbox
                 id="activeCheckbox"
                 checked={activeMode == "bg"}
                 onCheckedChange={(checked) =>
@@ -91,7 +124,7 @@ const themeuiDialog = (props: Props) => {
                 }
                 label={"Set active tab variant"}
               />
-              <Checkbox.Root
+              <UICheckbox
                 id="disabledCheckbox"
                 checked={tabsDisabled}
                 onCheckedChange={(checked) => setTabsDisabled(!!checked)}
@@ -107,17 +140,12 @@ const themeuiDialog = (props: Props) => {
 
 export default themeuiDialog;
 
+const overlayShow = keyframes({
+  "0%": { opacity: 0 },
+  "100%": { opacity: 1 },
+});
 
-
-type TriggerProps = {
-  value: string;
-  variant?: ;
-} & Tabs.TabsTriggerProps;
-
-const TabsTrigger = React.forwardRef(
-  (
-    { children, value, variant, disabled, ...props }: TriggerProps,
-    forwardedRef: React.ForwardedRef<HTMLButtonElement>
-  ) => (
-    <Box variant=""
-  ))
+const contentShow = keyframes({
+  "0%": { opacity: 0, transform: "translate(-50%, -48%) scale(.96)" },
+  "100%": { opacity: 1, transform: "translate(-50%, -50%) scale(1)" },
+});
