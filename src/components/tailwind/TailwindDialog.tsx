@@ -27,7 +27,7 @@ const TailwindDialog = ({}: Props) => {
             "h-52 w-1/3 animate-popIn rounded-md  shadow"
           )}
         >
-          <Dialog.Close className="absolute -top-5 -right-5 z-10 rounded-full bg-red-500 px-3 pb-1.5 text-2xl font-semibold text-black hover:bg-red-600">
+          <Dialog.Close className="absolute -top-5 -right-5 z-10 rounded-full bg-red-600 px-4 pb-1.5 text-2xl font-semibold text-black hover:bg-red-700">
             x
           </Dialog.Close>
           <Tabs.Root

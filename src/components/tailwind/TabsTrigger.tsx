@@ -36,7 +36,7 @@ const trigger = cva(
           "data-[state=active]:bg-primary",
           "data-[state=active]:text-white",
         ],
-        border: ["", "data-[state=active]:text-primary"],
+        border: ["data-[state=active]:text-primary"],
       },
       disabled: {
         false: "text-black",
